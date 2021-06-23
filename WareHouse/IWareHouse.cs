@@ -8,8 +8,8 @@ namespace WareHouse1
 {
     public interface IWareHouse
     {
-         bool AddProduct(string product, int count);
-         bool MoveProduct(int Sku, int count, string product, IWareHouse warehouse);
+         bool AddProduct(Product product, int count);
+         bool MoveProduct(int Sku, int count, Product product, IWareHouse warehouse);
          string SearchBySKU(int Sku);
          int TotalCost();
          string ResponsibilityWorker(string name);

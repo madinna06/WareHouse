@@ -27,11 +27,10 @@ namespace WareHouse1
                 Count = 15
             };
 
-            WareHouse W = new OpenWareHouse();
+            OpenWareHouse W = new OpenWareHouse();
 
-            Console.WriteLine(W.AddProduct(A, 40));
-            Console.WriteLine(W.AddProduct(B, 20));
-            Console.WriteLine(W.MoveProduct(1, 15, A, new CloseWareHouse()));
+            Console.WriteLine(W.AddProduct(A, 10));
+            Console.WriteLine(W.AddProduct(B, 5));
 
             Console.ReadKey();
         }

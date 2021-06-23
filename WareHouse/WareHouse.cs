@@ -8,34 +8,37 @@ namespace WareHouse1
 {
     public abstract class WareHouse : IWareHouse
     {
-        public List<Product> Product { get; set; } = new List<Product>();
-        public double Square { get; set; }
-        public  Worker ResponsibilityWorker { get; set; }
-        public AddressWareHouse Address { get; set; }
+        public List <Product> Products = new List <Product>();
 
-        public virtual bool AddProduct(string product, int count)
+        public List<Worker> workers = new List<Worker>();
+        public double Square { get; set; }
+        public string Address { get; set; }
+
+        public virtual bool AddProduct(Product product, int count)
         {
-            if (Product.Any(u => u.Name == product.Name))
+            foreach (var a in Products)
+            {
+               if (a.Name == product.Name)
             {
                 Product.Where(u => u.Name == product.Name).ToList().ForEach(i => i.Count += count);
                 return true;
             }
             else
             {
-                Product.Add(product);
+                Products.Add(product);
                 Product.Where(u => u.Name == product.Name).ToList().ForEach(i => i.Count += count);
                 return false;
+            }  
             }
+           
         }
 
         public virtual bool MoveProduct()
         {
-            if (Product.Any(u => u.SKU == Sku))
+            if ()
 
             {
-                warehouse.IsAddProduct(product, count);
-                Product.Where(u => u.SKU == Sku).ToList().ForEach(i => i.Count -= count);
-                Product.RemoveAll(u => u.SKU == Sku);
+              
                 return true;
             }
             else { return false; }
@@ -43,14 +46,18 @@ namespace WareHouse1
 
         public string SearchBySKU(int Sku)
         {
-        if (SKU == Sku)
+            foreach (var p in Products)
+            {
+                    if (p.SKU == Sku)
         {
-                return Sku;
+                return p.Name;
         }
         else
         {
                 return "Not Found";
         }
+            }
+        
 
     }
 
@@ -58,19 +65,23 @@ namespace WareHouse1
         {
             int sum = 0;
 
-            foreach (var i in Product)
+            foreach (var i in Products)
             {
                 sum += i.Price * i.Count;
             }
             return sum;
         }
 
-        public string ResponsibilityWorker(string position)
+        public string ResponsibilityWorker()
         {
-            if(position == "leader")
+            foreach (var n in workers)
             {
-                return WorkerName;
+                 if (n.Position == "leader")
+            {
+                return n.WorkerName;
             }
+            }
+           
         }
 
     }
