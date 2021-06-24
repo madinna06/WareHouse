@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace WareHouse1
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            Product A = new Product
+            Product Product1 = new Product
             {
                 Name = "aa",
                 SKU = 1,
@@ -18,7 +18,7 @@ namespace WareHouse1
                 Price = 250,
                 Count = 20
             };
-            Product B = new Product
+            Product Product2 = new Product
             {
                 Name = "bb",
                 SKU = 2,
@@ -29,8 +29,8 @@ namespace WareHouse1
 
             OpenWareHouse W = new OpenWareHouse();
 
-            Console.WriteLine(W.AddProduct(A, 10));
-            Console.WriteLine(W.AddProduct(B, 5));
+            Console.WriteLine(W.AddProduct(Product1));
+            Console.WriteLine(W.AddProduct(Product2));
 
             Console.ReadKey();
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WareHouse1
 {
-    class BulkProduct : Product
+    public class BulkProduct : Product
     {
     }
 }

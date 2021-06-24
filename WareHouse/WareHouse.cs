@@ -9,48 +9,38 @@ namespace WareHouse1
     public abstract class WareHouse : IWareHouse
     {
         public List <Product> Products = new List <Product>();
-
-        public List<Worker> workers = new List<Worker>();
+        public AddressWareHouse Address { get; set; }
+        public Worker Worker { get; set; }
         public double Square { get; set; }
-        public string Address { get; set; }
-
-        public virtual bool AddProduct(Product product, int count)
+        
+        public virtual bool AddProduct(Product product)
         {
-            foreach (var a in Products)
-            {
-               if (a.Name == product.Name)
-            {
-                Product.Where(u => u.Name == product.Name).ToList().ForEach(i => i.Count += count);
+            var result = Products.Where(x => x.Name == product.Name).FirstOrDefault();
                 return true;
+           if (result == null)
+            {
+                Products.Add(product);
             }
             else
             {
-                Products.Add(product);
-                Product.Where(u => u.Name == product.Name).ToList().ForEach(i => i.Count += count);
-                return false;
-            }  
+            //    Products.Where(x => x.Name == product.Name).ToList().x.Count + product.Count;
             }
            
         }
 
-        public virtual bool MoveProduct()
+        public decimal TotalCost()
         {
-            if ()
-
-            {
-              
-                return true;
-            }
-            else { return false; }
+            decimal sum = Products.Sum(x => x.Count * x.Price);
+            return sum;
         }
-
-        public string SearchBySKU(int Sku)
+        
+        public Product SearchBySKU(int Sku)
         {
             foreach (var p in Products)
             {
                     if (p.SKU == Sku)
         {
-                return p.Name;
+                return Product;
         }
         else
         {
@@ -60,29 +50,17 @@ namespace WareHouse1
         
 
     }
+  
 
-        public int TotalCost()
+        public Worker ResponsibilityWorker()
         {
-            int sum = 0;
+            throw new NotImplementedException();
 
-            foreach (var i in Products)
-            {
-                sum += i.Price * i.Count;
-            }
-            return sum;
         }
 
-        public string ResponsibilityWorker()
+        public bool MoveProduct(int count, Product product, IWareHouse warehouse)
         {
-            foreach (var n in workers)
-            {
-                 if (n.Position == "leader")
-            {
-                return n.WorkerName;
-            }
-            }
-           
+            throw new NotImplementedException();
         }
-
     }
 }

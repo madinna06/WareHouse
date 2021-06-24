@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace WareHouse1
 {
-    class OpenWareHouse : WareHouse, IWareHouse
+    public class OpenWareHouse : WareHouse
     {
    
-            public override bool AddProduct(Product product, int count)
+            public override bool AddProduct(Product product)
             {
                 if(product is BulkProduct)
                 {
@@ -17,7 +17,7 @@ namespace WareHouse1
                 }
                 else
                 {
-                    base.AddProduct(product, count);
+                    base.AddProduct(product);
                     return true;
                 }
 

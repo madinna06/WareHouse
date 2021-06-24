@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace WareHouse1
 {
-    class Worker
+    public class Worker
     {
-        public string WorkerName { get; set; }
-        public string Position { get; set; }
+        public string FirstName { get; set; }
+        public string MiddleName { get; set; }
+        public string LastName { get; set; }
+        public string WorkStation { get; set; }
+        public string WorkPosition { get; set; }
     }
 }
