@@ -36,17 +36,7 @@ namespace WareHouse1
         
         public Product SearchBySKU(int Sku)
         {
-            foreach (var p in Products)
-            {
-                    if (p.SKU == Sku)
-        {
-                return Product;
-        }
-        else
-        {
-                return "Not Found";
-        }
-            }
+            
         
 
     }
