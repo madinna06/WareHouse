@@ -13,5 +13,6 @@ namespace WareHouse1
          Product SearchBySKU(int Sku);
          decimal TotalCost();
          Worker ResponsibleWorker(Worker worker);
+       
     }
 }

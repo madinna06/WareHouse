@@ -90,11 +90,13 @@ namespace WareHouse1
                     {
                     if (WareHouseType == 1)
                     {
-                        Console.WriteLine(OpenWareHouse1.SearchBySKU(1));
+                        Product products = OpenWareHouse1.SearchBySKU(1);
+
                     }
                     else
                     {
-                        Console.WriteLine(CloseWareHouse1.SearchBySKU(1));
+                        Product products = CloseWareHouse1.SearchBySKU(1); 
+                        
                     }
                         
                     }
@@ -114,11 +116,12 @@ namespace WareHouse1
                     {
                     if (WareHouseType == 1)
                     {
-                        Console.WriteLine(OpenWareHouse1.ResponsibleWorker(Worker1));
+                        Worker worker2 = OpenWareHouse1.ResponsibleWorker(Worker1);
+                        
                     }
                     else
                     {
-                        Console.WriteLine(CloseWareHouse1.ResponsibleWorker(Worker1));
+                        Worker worker2 = CloseWareHouse1.ResponsibleWorker(Worker1);
                     }
                    
                     }

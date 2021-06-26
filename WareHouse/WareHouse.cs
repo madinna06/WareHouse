@@ -50,22 +50,22 @@ namespace WareHouse1
             }
 
         }
-  
+
 
         public Worker ResponsibleWorker(Worker worker)
         {
             //  return Workers.Where(x => x.WorkStation == workStation).FirstOrDefault();
 
             Worker = worker;
-           
-                return new Worker();
-            
 
-
-
-
+            return new Worker();
 
         }
+    
+
+
+
+        
 
         public bool MoveProduct(int count, Product product, IWareHouse warehouse)
         {
@@ -89,6 +89,7 @@ namespace WareHouse1
                 
             
         }
+
 
     }
 }
