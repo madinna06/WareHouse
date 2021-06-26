@@ -26,11 +26,59 @@ namespace WareHouse1
                 Price = 250,
                 Count = 15
             };
+            Worker Worker1 = new Worker
+            {
+                FirstName = "Mad",
+                MiddleName = "Mad",
+                LastName = "Mad",
+                WorkStation = "OpenWareHouse",
+                WorkPosition = "admin"
+    };
+            AddressWareHouse address = new AddressWareHouse
+            {
+                Country = "Kazakhstan",
+                City = "Almaty",
+                Street = "Al-Farabi",
+                Number = 71, 
+                ZIP = 12000
+            };
 
-            OpenWareHouse W = new OpenWareHouse();
+            OpenWareHouse OpenWareHouse1 = new OpenWareHouse();
+            CloseWareHouse CloseWareHouse1 = new CloseWareHouse(); 
 
-            Console.WriteLine(W.AddProduct(Product1));
-            Console.WriteLine(W.AddProduct(Product2));
+            Console.WriteLine("1.Добавить товар. ");
+            Console.WriteLine("2.Переместить товар на другой склад. ");
+            Console.WriteLine("3.Поиск товара. ");
+            Console.WriteLine("4. Итоговая цен");
+            Console.WriteLine("5.Назначить ответственого сотрудника.\n");
+            string actions = Console.ReadLine();
+
+            
+
+            if (actions == "1")
+            {
+                Console.WriteLine(OpenWareHouse1.AddProduct(Product1));
+            }
+            if (actions == "2")
+            {
+                Console.WriteLine(OpenWareHouse1.MoveProduct (15, Product1, new CloseWareHouse()));
+
+            }
+            if (actions == "3")
+            {
+                Console.WriteLine(OpenWareHouse1.SearchBySKU(1));
+            }
+            if (actions == "4")
+            {
+                Console.WriteLine(OpenWareHouse1.TotalCost()); 
+            }
+            if (actions == "5")
+            {
+                Console.WriteLine(OpenWareHouse1.ResponsibileWorker("OpenWareHouse"));
+            }
+
+           
+
 
             Console.ReadKey();
         }

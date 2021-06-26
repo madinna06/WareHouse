@@ -12,6 +12,6 @@ namespace WareHouse1
          bool MoveProduct(int count, Product product, IWareHouse warehouse);
          Product SearchBySKU(int Sku);
          decimal TotalCost();
-         Worker ResponsibilityWorker();
+         Worker ResponsibileWorker(string workStation);
     }
 }

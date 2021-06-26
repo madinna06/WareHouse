@@ -10,20 +10,24 @@ namespace WareHouse1
     {
         public List <Product> Products = new List <Product>();
         public AddressWareHouse Address { get; set; }
-        public Worker Worker { get; set; }
+
+        public List<Worker> Workers = new List<Worker>();
         public double Square { get; set; }
         
         public virtual bool AddProduct(Product product)
         {
             var result = Products.Where(x => x.Name == product.Name).FirstOrDefault();
-                return true;
+               
            if (result == null)
             {
-                Products.Add(product);
+                Products.Add(product); 
+                return false;
             }
             else
             {
-            //    Products.Where(x => x.Name == product.Name).ToList().x.Count + product.Count;
+                int result1 = result.Count + product.Count; 
+
+                return true;
             }
            
         }
@@ -36,21 +40,37 @@ namespace WareHouse1
         
         public Product SearchBySKU(int Sku)
         {
-            
-        
+            if(Products.Any(x => x.SKU == Sku))
+            {
+                return Products.Where(x => x.SKU == Sku).FirstOrDefault();
+            }
+            else
+            {
+                return new Product();
+            }
 
-    }
+        }
   
 
-        public Worker ResponsibilityWorker()
+        public Worker ResponsibileWorker(string workStation)
         {
-            throw new NotImplementedException();
+            return Workers.Where(x => x.WorkStation == workStation).FirstOrDefault();
 
         }
 
         public bool MoveProduct(int count, Product product, IWareHouse warehouse)
         {
-            throw new NotImplementedException();
+            var resultProduct = Products.Where(x => x.Name == product.Name).FirstOrDefault();
+
+            if (resultProduct == null)
+            {
+                return false;
+            }
+            
+            else
+            {
+                return true;
+            }
         }
     }
 }
