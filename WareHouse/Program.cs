@@ -18,14 +18,7 @@ namespace WareHouse1
                 Price = 250,
                 Count = 20
             };
-            Product Product2 = new Product
-            {
-                Name = "bb",
-                SKU = 2,
-                Description = "sweet",
-                Price = 250,
-                Count = 15
-            };
+
             Worker Worker1 = new Worker
             {
                 FirstName = "Mad",
@@ -46,40 +39,89 @@ namespace WareHouse1
             OpenWareHouse OpenWareHouse1 = new OpenWareHouse();
             CloseWareHouse CloseWareHouse1 = new CloseWareHouse(); 
 
-            Console.WriteLine("1.Добавить товар. ");
-            Console.WriteLine("2.Переместить товар на другой склад. ");
-            Console.WriteLine("3.Поиск товара. ");
-            Console.WriteLine("4. Итоговая цен");
-            Console.WriteLine("5.Назначить ответственого сотрудника.\n");
-            string actions = Console.ReadLine();
+            int actions = 1;
+            while (actions != 0)
+            {              
+                    Console.Write(
+                    "\n1 - Добавить товар. " +
+                    "\n2 - Переместить товар на другой склад. " +
+                    "\n3 - Поиск товара. " +
+                    "\n4 - Итоговая цена. " +
+                    "\n5 - Назначить ответственого сотрудника. " +
+                    "\n0 - Stop the process\n ");
+                     
+                Console.WriteLine("Выберите склад:\n");
+                string WareHouseType = Console.ReadLine();
 
-            
+                actions = Convert.ToInt32(Console.ReadLine());
 
-            if (actions == "1")
-            {
-                Console.WriteLine(OpenWareHouse1.AddProduct(Product1));
-            }
-            if (actions == "2")
-            {
-                Console.WriteLine(OpenWareHouse1.MoveProduct (15, Product1, new CloseWareHouse()));
+                    if (actions == 1)
+                    {
+                       if (WareHouseType == "Открытый")
+                    {
+                       Console.WriteLine(OpenWareHouse1.AddProduct(Product1));
+                    }
+                       else
+                    {
+                        Console.WriteLine(CloseWareHouse1.AddProduct(Product1));
+                    }
+                    
+                      
+                    }
+                    if (actions == 2)
+                    {
+                        if (WareHouseType == "Открытый")
+                    {
+                        Console.WriteLine(OpenWareHouse1.MoveProduct(15, Product1, new CloseWareHouse()));
+                    }
+                        else
+                    {
+                        Console.WriteLine(CloseWareHouse1.MoveProduct(15, Product1, new OpenWareHouse()));
+                    }
 
-            }
-            if (actions == "3")
-            {
-                Console.WriteLine(OpenWareHouse1.SearchBySKU(1));
-            }
-            if (actions == "4")
-            {
-                Console.WriteLine(OpenWareHouse1.TotalCost()); 
-            }
-            if (actions == "5")
-            {
-                Console.WriteLine(OpenWareHouse1.ResponsibileWorker("OpenWareHouse"));
-            }
 
-           
+                }
+                    if (actions == 3)
+                    {
+                    if (WareHouseType == "Открытый")
+                    {
+                        Console.WriteLine(OpenWareHouse1.SearchBySKU(1));
+                    }
+                    else
+                    {
+                        Console.WriteLine(CloseWareHouse1.SearchBySKU(1));
+                    }
+                        
+                    }
+                    if (actions == 4)
+                    {
+                    if (WareHouseType == "Открытый")
+                    {
+                        Console.WriteLine(OpenWareHouse1.TotalCost());
+                    }
+                    else
+                    {
+                        Console.WriteLine(CloseWareHouse1.TotalCost());
+                    }
+                        
+                    }
+                    if (actions == 5)
+                    {
+                    if (WareHouseType == "Открытый")
+                    {
+                        Console.WriteLine(OpenWareHouse1.ResponsibileWorker("OpenWareHouse"));
+                    }
+                    else
+                    {
+                        Console.WriteLine(CloseWareHouse1.ResponsibileWorker("OpenWareHouse"));
+                    }
+                   
+                    }
+                
 
 
+
+}
             Console.ReadKey();
         }
     }
