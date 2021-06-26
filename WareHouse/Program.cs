@@ -24,7 +24,6 @@ namespace WareHouse1
                 FirstName = "Mad",
                 MiddleName = "Mad",
                 LastName = "Mad",
-                WorkStation = "OpenWareHouse",
                 WorkPosition = "admin"
     };
             AddressWareHouse address = new AddressWareHouse
@@ -38,6 +37,10 @@ namespace WareHouse1
 
             OpenWareHouse OpenWareHouse1 = new OpenWareHouse();
             CloseWareHouse CloseWareHouse1 = new CloseWareHouse(); 
+            
+            Console.Write("Выберите склад" +
+                "\nОткрытый - 1 или Закрытый - 2: ");
+            int WareHouseType = Convert.ToInt32(Console.ReadLine());
 
             int actions = 1;
             while (actions != 0)
@@ -48,42 +51,44 @@ namespace WareHouse1
                     "\n3 - Поиск товара. " +
                     "\n4 - Итоговая цена. " +
                     "\n5 - Назначить ответственого сотрудника. " +
-                    "\n0 - Stop the process\n ");
-                     
-                Console.WriteLine("Выберите склад:\n");
-                string WareHouseType = Console.ReadLine();
+                    "\n0 - Stop the process. " +
+                    "\nВыберите действие: ");
+              
+                actions = Convert.ToInt32(Console.ReadLine());    
+                
 
-                actions = Convert.ToInt32(Console.ReadLine());
+               
 
                     if (actions == 1)
                     {
-                       if (WareHouseType == "Открытый")
+                       if (WareHouseType == 1)
                     {
-                       Console.WriteLine(OpenWareHouse1.AddProduct(Product1));
+                        OpenWareHouse1.AddProduct(Product1, Product1.Count);
+                       
                     }
                        else
                     {
-                        Console.WriteLine(CloseWareHouse1.AddProduct(Product1));
+                        CloseWareHouse1.AddProduct(Product1, Product1.Count);
                     }
-                    
+                    Console.WriteLine("Товар добавлен. ");
                       
                     }
                     if (actions == 2)
                     {
-                        if (WareHouseType == "Открытый")
+                        if (WareHouseType == 1)
                     {
-                        Console.WriteLine(OpenWareHouse1.MoveProduct(15, Product1, new CloseWareHouse()));
+                        OpenWareHouse1.MoveProduct(15, Product1, new CloseWareHouse());
                     }
                         else
                     {
-                        Console.WriteLine(CloseWareHouse1.MoveProduct(15, Product1, new OpenWareHouse()));
+                        CloseWareHouse1.MoveProduct(15, Product1, new OpenWareHouse());
                     }
 
 
                 }
                     if (actions == 3)
                     {
-                    if (WareHouseType == "Открытый")
+                    if (WareHouseType == 1)
                     {
                         Console.WriteLine(OpenWareHouse1.SearchBySKU(1));
                     }
@@ -95,7 +100,7 @@ namespace WareHouse1
                     }
                     if (actions == 4)
                     {
-                    if (WareHouseType == "Открытый")
+                    if (WareHouseType == 1)
                     {
                         Console.WriteLine(OpenWareHouse1.TotalCost());
                     }
@@ -107,13 +112,13 @@ namespace WareHouse1
                     }
                     if (actions == 5)
                     {
-                    if (WareHouseType == "Открытый")
+                    if (WareHouseType == 1)
                     {
-                        Console.WriteLine(OpenWareHouse1.ResponsibileWorker("OpenWareHouse"));
+                        Console.WriteLine(OpenWareHouse1.ResponsibleWorker(Worker1));
                     }
                     else
                     {
-                        Console.WriteLine(CloseWareHouse1.ResponsibileWorker("OpenWareHouse"));
+                        Console.WriteLine(CloseWareHouse1.ResponsibleWorker(Worker1));
                     }
                    
                     }

@@ -9,7 +9,7 @@ namespace WareHouse1
     public class OpenWareHouse : WareHouse
     {
    
-            public override bool AddProduct(Product product)
+            public override bool AddProduct(Product product, int count)
             {
                 if(product is BulkProduct)
                 {
@@ -17,7 +17,7 @@ namespace WareHouse1
                 }
                 else
                 {
-                    base.AddProduct(product);
+                    base.AddProduct(product, product.Count);
                     return true;
                 }
 

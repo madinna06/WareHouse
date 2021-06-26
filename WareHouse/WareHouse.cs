@@ -11,10 +11,10 @@ namespace WareHouse1
         public List <Product> Products = new List <Product>();
         public AddressWareHouse Address { get; set; }
 
-        public List<Worker> Workers = new List<Worker>();
+        public Worker Worker { get; set; }
         public double Square { get; set; }
         
-        public virtual bool AddProduct(Product product)
+        public virtual bool AddProduct(Product product, int count)
         {
             var result = Products.Where(x => x.Name == product.Name).FirstOrDefault();
                
@@ -25,7 +25,7 @@ namespace WareHouse1
             }
             else
             {
-                int result1 = result.Count + product.Count; 
+                Products.Where(x => x.Name == product.Name).ToList().ForEach(i => i.Count += count);
 
                 return true;
             }
@@ -52,9 +52,18 @@ namespace WareHouse1
         }
   
 
-        public Worker ResponsibileWorker(string workStation)
+        public Worker ResponsibleWorker(Worker worker)
         {
-            return Workers.Where(x => x.WorkStation == workStation).FirstOrDefault();
+            //  return Workers.Where(x => x.WorkStation == workStation).FirstOrDefault();
+
+            Worker = worker;
+           
+                return new Worker();
+            
+
+
+
+
 
         }
 
@@ -64,13 +73,22 @@ namespace WareHouse1
 
             if (resultProduct == null)
             {
+                Console.WriteLine("На складе нет такой товар.");
                 return false;
             }
             
             else
             {
+                Products.Where(x => x.Name == product.Name).ToList().ForEach(i => i.Count-=count);
+                
+                warehouse.AddProduct(product, count);
+                Console.WriteLine("Товар перемещен на другой склад.");
                 return true;
+            
             }
+                
+            
         }
+
     }
 }
