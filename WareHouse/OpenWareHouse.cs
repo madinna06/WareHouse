@@ -9,16 +9,15 @@ namespace WareHouse1
     public class OpenWareHouse : WareHouse
     {
    
-            public override bool AddProduct(Product product, int count)
+            public override void AddProduct(Product product, int count)
             {
                 if(product is BulkProduct)
                 {
-                    return false;
+                Console.WriteLine("Сыпущие продукты добавляйте в другой склад");
                 }
                 else
                 {
                     base.AddProduct(product, product.Count);
-                    return true;
                 }
 
         

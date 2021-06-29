@@ -14,20 +14,19 @@ namespace WareHouse1
         public Worker Worker { get; set; }
         public double Square { get; set; }
         
-        public virtual bool AddProduct(Product product, int count)
+        public virtual void AddProduct(Product product, int count)
         {
             var result = Products.Where(x => x.Name == product.Name).FirstOrDefault();
                
            if (result == null)
             {
                 Products.Add(product); 
-                return false;
+                
             }
             else
             {
-                Products.Where(x => x.Name == product.Name).ToList().ForEach(i => i.Count += count);
+                Products.Where(x => x.Name == product.Name).FirstOrDefault().Count += count;
 
-                return true;
             }
            
         }
@@ -46,6 +45,7 @@ namespace WareHouse1
             }
             else
             {
+                Console.WriteLine("Продукт не найден. ");
                 return new Product();
             }
 
@@ -54,18 +54,14 @@ namespace WareHouse1
 
         public Worker ResponsibleWorker(Worker worker)
         {
-            //  return Workers.Where(x => x.WorkStation == workStation).FirstOrDefault();
+          
 
             Worker = worker;
 
-            return new Worker();
+            return Worker;
 
         }
-    
 
-
-
-        
 
         public bool MoveProduct(int count, Product product, IWareHouse warehouse)
         {
@@ -79,7 +75,15 @@ namespace WareHouse1
             
             else
             {
-                Products.Where(x => x.Name == product.Name).ToList().ForEach(i => i.Count-=count);
+                if(product.Count >= count)
+                {
+                    Products.Where(x => x.Name == product.Name).FirstOrDefault().Count -= count;
+                }
+                else
+                {
+                    Products.Where(x => x.Name == product.Name).FirstOrDefault().Count -= product.Count;
+                    Console.WriteLine("На складе нет данный товар заданном количестве, перемещен все товары который был на складе");
+                }
                 
                 warehouse.AddProduct(product, count);
                 Console.WriteLine("Товар перемещен на другой склад.");

@@ -8,7 +8,7 @@ namespace WareHouse1
 {
     public interface IWareHouse
     {
-         bool AddProduct(Product product, int count);
+         void AddProduct(Product product, int count);
          bool MoveProduct(int count, Product product, IWareHouse warehouse);
          Product SearchBySKU(int Sku);
          decimal TotalCost();

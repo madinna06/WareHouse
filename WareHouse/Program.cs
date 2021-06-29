@@ -77,11 +77,11 @@ namespace WareHouse1
                     {
                         if (WareHouseType == 1)
                     {
-                        OpenWareHouse1.MoveProduct(15, Product1, new CloseWareHouse());
+                        OpenWareHouse1.MoveProduct(15, Product1, CloseWareHouse1);
                     }
                         else
                     {
-                        CloseWareHouse1.MoveProduct(15, Product1, new OpenWareHouse());
+                        CloseWareHouse1.MoveProduct(15, Product1, OpenWareHouse1);
                     }
 
 
