@@ -64,14 +64,14 @@ namespace WareHouse1
                     {
                         if (WareHouseType == 1)
                         {
-                        try
-                        {
+                       // try
+                       // {
                             OpenWareHouse1.AddProduct(Product1, Product1.Count);
-                        }
-                        catch
-                        {
-                            Console.WriteLine("Возникло исключение!");
-                        }
+                        //}
+                       // catch
+                      //  {
+                        //    Console.WriteLine("Возникло исключение!");
+                       // }
         }
                         else
                         {
