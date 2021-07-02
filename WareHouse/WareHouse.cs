@@ -8,6 +8,9 @@ namespace WareHouse1
 {
     public abstract class WareHouse : IWareHouse
     {
+        public delegate void AccountHandler(string message);
+        public event AccountHandler Notify;
+
         public List <Product> Products = new List <Product>();
         public AddressWareHouse Address { get; set; }
 
@@ -28,7 +31,8 @@ namespace WareHouse1
                 Products.Where(x => x.Name == product.Name).FirstOrDefault().Count += count;
 
             }
-           
+            Notify?.Invoke($"Добавление товара. ");
+
         }
 
         public decimal TotalCost()

@@ -43,8 +43,9 @@ namespace WareHouse1
             int WareHouseType = Convert.ToInt32(Console.ReadLine());
 
             int actions = 1;
-            while (actions != 0)
-            {              
+            
+                while (actions != 0)
+                {
                     Console.Write(
                     "\n1 - Добавить товар. " +
                     "\n2 - Переместить товар на другой склад. " +
@@ -53,83 +54,94 @@ namespace WareHouse1
                     "\n5 - Назначить ответственого сотрудника. " +
                     "\n0 - Stop the process. " +
                     "\nВыберите действие: ");
-              
-                actions = Convert.ToInt32(Console.ReadLine());    
-                
 
-               
+                    actions = Convert.ToInt32(Console.ReadLine());
+
+
+
 
                     if (actions == 1)
                     {
-                       if (WareHouseType == 1)
-                    {
-                        OpenWareHouse1.AddProduct(Product1, Product1.Count);
-                       
-                    }
-                       else
-                    {
-                        CloseWareHouse1.AddProduct(Product1, Product1.Count);
-                    }
-                    Console.WriteLine("Товар добавлен. ");
-                      
+                        if (WareHouseType == 1)
+                        {
+                        try
+                        {
+                            OpenWareHouse1.AddProduct(Product1, Product1.Count);
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Возникло исключение!");
+                        }
+        }
+                        else
+                        {
+                            CloseWareHouse1.AddProduct(Product1, Product1.Count);
+                        }
+                        Console.WriteLine("Товар добавлен. ");
+
                     }
                     if (actions == 2)
                     {
                         if (WareHouseType == 1)
-                    {
-                        OpenWareHouse1.MoveProduct(15, Product1, CloseWareHouse1);
-                    }
+                        {
+                            OpenWareHouse1.MoveProduct(15, Product1, CloseWareHouse1);
+                        }
                         else
-                    {
-                        CloseWareHouse1.MoveProduct(15, Product1, OpenWareHouse1);
+                        {
+                            CloseWareHouse1.MoveProduct(15, Product1, OpenWareHouse1);
+                        }
+
+
                     }
 
-
-                }
                     if (actions == 3)
                     {
-                    if (WareHouseType == 1)
-                    {
-                        Product products = OpenWareHouse1.SearchBySKU(1);
+                        if (WareHouseType == 1)
+                        {
+                            Product products = OpenWareHouse1.SearchBySKU(1);
 
+                        }
+                        else
+                        {
+                            Product products = CloseWareHouse1.SearchBySKU(1);
+
+                        }
                     }
-                    else
-                    {
-                        Product products = CloseWareHouse1.SearchBySKU(1); 
-                        
-                    }
-                        
-                    }
+
+
+
                     if (actions == 4)
                     {
-                    if (WareHouseType == 1)
-                    {
-                        Console.WriteLine(OpenWareHouse1.TotalCost());
-                    }
-                    else
-                    {
-                        Console.WriteLine(CloseWareHouse1.TotalCost());
-                    }
-                        
+                        if (WareHouseType == 1)
+                        {
+                            Console.WriteLine(OpenWareHouse1.TotalCost());
+                        }
+                        else
+                        {
+                            Console.WriteLine(CloseWareHouse1.TotalCost());
+                        }
+
                     }
                     if (actions == 5)
                     {
-                    if (WareHouseType == 1)
-                    {
-                        Worker worker2 = OpenWareHouse1.ResponsibleWorker(Worker1);
-                        
+                        if (WareHouseType == 1)
+                        {
+                            Worker worker2 = OpenWareHouse1.ResponsibleWorker(Worker1);
+
+                        }
+                        else
+                        {
+                            Worker worker2 = CloseWareHouse1.ResponsibleWorker(Worker1);
+                        }
+
                     }
-                    else
-                    {
-                        Worker worker2 = CloseWareHouse1.ResponsibleWorker(Worker1);
-                    }
-                   
-                    }
-                
 
 
 
-}
+
+                }
+            
+
             Console.ReadKey();
         }
     }
