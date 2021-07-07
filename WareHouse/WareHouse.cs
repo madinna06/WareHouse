@@ -23,14 +23,19 @@ namespace WareHouse1
                
            if (result == null)
             {
-                Products.Add(product); 
-                
+                Products.Add(product);
+                Products.Where(x => x.Name == product.Name).FirstOrDefault().Count += count;
+
             }
             else
             {
                 Products.Where(x => x.Name == product.Name).FirstOrDefault().Count += count;
 
             }
+
+
+
+
             Notify?.Invoke($"Добавление товара. ");
 
         }
@@ -79,17 +84,20 @@ namespace WareHouse1
             
             else
             {
-                if(product.Count >= count)
+                int Count1 = Products.Where(x => x.Name == product.Name).FirstOrDefault().Count;
+                if (Count1 >= count)
                 {
-                    Products.Where(x => x.Name == product.Name).FirstOrDefault().Count -= count;
+                    Count1 -= count;
+                   
                 }
                 else
                 {
-                    Products.Where(x => x.Name == product.Name).FirstOrDefault().Count -= product.Count;
+                    count = Count1;
+                    Products.Remove(resultProduct);
                     Console.WriteLine("На складе нет данный товар заданном количестве, перемещен все товары который был на складе");
                 }
-                
-                warehouse.AddProduct(product, count);
+                 warehouse.AddProduct(product, count);
+               
                 Console.WriteLine("Товар перемещен на другой склад.");
                 return true;
             

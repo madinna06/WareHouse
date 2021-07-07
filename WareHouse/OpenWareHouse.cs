@@ -19,16 +19,23 @@ namespace WareHouse1
 
                     base.AddProduct(product, product.Count);
                 }
-
-
-          
+                else
+                {
+                   throw new Exception("Сыпущие продукты не добавляйте в открытый склад");
+                }
+                
             }
-
-            catch 
+            catch (ArgumentOutOfRangeException)
             {
-                Console.WriteLine("Сыпущие продукты добавляйте в другой склад");
+                Console.WriteLine("Возникло исключение ArgumentOutOfRangeException");
+            }
+
+            catch (Exception ex) 
+            {
+                Console.WriteLine($"Исключение: {ex.Message}");
 
             }
+           
         }
         }
 
