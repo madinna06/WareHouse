@@ -47,6 +47,7 @@
     <Compile Include="BulkProduct.cs" />
     <Compile Include="CloseWareHouse.cs" />
     <Compile Include="DimensionProduct.cs" />
+    <Compile Include="Event.cs" />
     <Compile Include="IWareHouse.cs" />
     <Compile Include="LiquidProduct.cs" />
     <Compile Include="OpenWareHouse.cs" />

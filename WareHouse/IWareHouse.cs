@@ -13,6 +13,8 @@ namespace WareHouse1
          Product SearchBySKU(int Sku);
          decimal TotalCost();
          Worker ResponsibleWorker(Worker worker);
-       
+         void Extention(string name);
+         void ProductInTwoWarehouses();
+        
     }
 }

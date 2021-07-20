@@ -10,6 +10,39 @@ namespace WareHouse1
     {
         static void Main(string[] args)
         {
+         
+
+        Product Product1 = new LiquidProduct
+            {
+                Name = "dada",
+                SKU = 1,
+                Description = "sweet",
+                Price = 250,
+                Count = 20
+            };
+            OpenWareHouse OpenWareHouse1 = new OpenWareHouse();
+            CloseWareHouse CloseWareHouse1 = new CloseWareHouse();
+
+
+
+
+            OpenWareHouse1.AddProduct(Product1, 10);
+              OpenWareHouse1.MoveProduct(6, Product1, CloseWareHouse1);
+
+            OpenWareHouse1.Products.ForEach(x =>
+            {
+                Console.WriteLine($"{x.Name}, {x.Count}");
+            });
+
+            CloseWareHouse1.Products.ForEach(x =>
+            {
+                Console.WriteLine($"{x.Name}, {x.Count}");
+            });
+ 
+            
+           
+          /*
+            
             Product Product1 = new Product
             {
                 Name = "aa",
@@ -34,6 +67,7 @@ namespace WareHouse1
                 Number = 71, 
                 ZIP = 12000
             };
+
 
             OpenWareHouse OpenWareHouse1 = new OpenWareHouse();
             CloseWareHouse CloseWareHouse1 = new CloseWareHouse(); 
@@ -135,7 +169,7 @@ namespace WareHouse1
 
 
                 }
-            
+            */
 
             Console.ReadKey();
         }
