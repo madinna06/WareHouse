@@ -17,11 +17,14 @@ namespace WareHouse1
                 if (!(product is BulkProduct))
                 {
 
-                    base.AddProduct(product, product.Count);
+                    base.AddProduct(product, count);
 
                     Notify?.Invoke(this, new ProductEventArgs { NameofProduct = product.Name });
                 }
-                throw new Exception("Сыпущие продукты не добавляйте в открытый склад");       
+                else
+                {
+                    throw new Exception("Сыпущие продукты не добавляйте в открытый склад");
+                }
             }
             catch (ArgumentOutOfRangeException)
             {

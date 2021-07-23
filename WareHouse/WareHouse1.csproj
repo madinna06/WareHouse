@@ -48,6 +48,7 @@
     <Compile Include="CloseWareHouse.cs" />
     <Compile Include="DimensionProduct.cs" />
     <Compile Include="Event.cs" />
+    <Compile Include="Extention.cs" />
     <Compile Include="IWareHouse.cs" />
     <Compile Include="LiquidProduct.cs" />
     <Compile Include="OpenWareHouse.cs" />

@@ -92,53 +92,5 @@ namespace WareHouse1
                 return true;
             }
         }
-
-        public void Extention(string name)
-        {
-            int sku = Products.Where(x => x.Name == name).FirstOrDefault().SKU;
-            Console.WriteLine($"{name}, {sku}");
-
-        }
-        /*
-                public void ProductInTwoWarehouses()
-                {
-                    foreach (int i in Products)
-                    {
-                       int s = 0;
-
-                       if (sku >= 2) i.SKU==
-
-                    }
-
-                }
-        */ 
-        public void ProductInTwoWarehouses()
-        {
-            throw new NotImplementedException();
-        }
-
-
-        public void Sort() {
-            /*           var sortedProducts = from u in Products
-                                            orderby u.Count ascending
-                                            select u;
-
-                       foreach (Product u in sortedProducts)
-                           Console.WriteLine(u.Count);
-            */
-            var sortedProductsCount=Products.Where(x => x.Count >= 3).OrderBy(x => x.Count);
-            var sortedProductsName = Products.OrderBy(u => u.Name);
-            var sortedProductsMax3 = Products.OrderByDescending(u => u.Count).ThenBy(u => u.Name);
-            int i = 0;
-            foreach (var u in sortedProductsMax3)
-            {
-                if(i == 3) break;
-                Console.WriteLine($"{u.Name} - {u.Count}");
-                i++;
-            }
-
-        }
-
-     
-    }
+}
 }

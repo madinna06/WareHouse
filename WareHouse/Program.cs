@@ -24,15 +24,9 @@ namespace WareHouse1
             CloseWareHouse CloseWareHouse1 = new CloseWareHouse();
 
 
-
-
             OpenWareHouse1.AddProduct(Product1, 10);
-              OpenWareHouse1.MoveProduct(6, Product1, CloseWareHouse1);
+            OpenWareHouse1.MoveProduct(6, Product1, CloseWareHouse1);
 
-            OpenWareHouse1.Products.ForEach(x =>
-            {
-                Console.WriteLine($"{x.Name}, {x.Count}");
-            });
 
             CloseWareHouse1.Products.ForEach(x =>
             {
