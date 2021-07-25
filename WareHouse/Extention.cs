@@ -8,35 +8,26 @@ namespace WareHouse1
 {
     static class Extention
     {
-        /* public static void SKUExtention(this Product product, string name)
+         public static void SKUExtention(this List<Product> products, string name)
          {
-             int sku = Product.Where(x => x.Name == name).FirstOrDefault().SKU;
-             Console.WriteLine($"{name}, {sku}");
+             int sku = products.Where(x => x.Name == name).FirstOrDefault().SKU;
+
+                Console.WriteLine($"{name}, {sku}");         
          }
-         public static void ProductInTwoWarehousesExtention(this WareHouse wareHouse)
+        public static void ProductInTwoWarehousesExtention(this WareHouse WareHouse1,  WareHouse WareHouse2)
          {
 
-         }
+            var names = WareHouse1.Products.Intersect(WareHouse2.Products);
+        }
+        public static void ProductHalfProductExtention(this WareHouse WareHouse1, WareHouse WareHouse2)
+        {
+            var result = WareHouse1.Products.Except(WareHouse2.Products);
+            if (result.Any(u => u.Count >= 1))
+            {
+                WareHouse1.MoveProduct( ,  , WareHouse2);
 
-         public static void SortedCountExtention(this Product product)
-         {
-             var sortedProductsCount = Product.Where(x => x.Count >= 3).OrderBy(x => x.Count);
-         }
-         public static bool SortedNameExtention(this Product product)
-         {
-             var sortedProductsName = Product.OrderBy(u => u.Name);
-             return 
-         }
-         public static void SortedMax3Extention(this Product product)
-         {
-             var sortedProductsMax3 = Product.OrderByDescending(u => u.Count).ThenBy(u => u.Name);
-             int i = 0;
-             foreach (var u in sortedProductsMax3)
-             {
-                 if (i == 3) break;
-                 Console.WriteLine($"{u.Name} - {u.Count}");
-                 i++;
-             }
-         }*/
+            }
+
+        }
     }
 }
