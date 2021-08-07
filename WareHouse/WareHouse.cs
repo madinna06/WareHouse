@@ -67,29 +67,21 @@ namespace WareHouse1
         }
 
 
-        public bool MoveProduct(int count, Product product, IWareHouse warehouse)
+        public Product MoveProduct(int count, Product product, IWareHouse warehouse)
         {
             var resultProduct = Products.Where(x => x.Name == product.Name).FirstOrDefault();
 
-            if (resultProduct == null)
+            if (resultProduct.Count >= count)
             {
-                Console.WriteLine("На складе нет такой товар.");
-                return false;
+               resultProduct.Count -= count;
+                warehouse.AddProduct(product, count);
+                Console.WriteLine("Товар перемещен на другой склад.");
+                return new Product();
             }
             else
             {
-                if (Products.Where(x => x.Name == product.Name).FirstOrDefault().Count >= count)
-                {
-                    Products.Where(x => x.Name == product.Name).FirstOrDefault().Count -= count;
-                    warehouse.AddProduct(product, count);
-
-                    Console.WriteLine("Товар перемещен на другой склад.");
-                }
-                else
-                {
-                    Console.WriteLine("На складе нет данный товар заданном количестве. ");
-                }
-                return true;
+                 Console.WriteLine("На складе нет данный товар заданном количестве. ");
+                 return new Product();
             }
         }
 }

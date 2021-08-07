@@ -30,7 +30,7 @@ namespace WareHouse1
             */
 
         }
-        public void SortedNotBulk (List<Product> product)
+   /*     public void SortedNotBulk (List<Product> product)
         {
 
             var selectedWareHouse = product.SelectMany(u => u.Languages,
@@ -38,10 +38,12 @@ namespace WareHouse1
 .Where(u => u.Lang == "английский" && u.User.Age < 28)
 .Select(u => u.User);
         }
+   
         public void SortedAverageCount(List<Product> product, WareHouse WareHouse1, WareHouse WareHouse2)
         {
             var result = product.WareHouse1.Union(product.WareHouse2);
 
         }
+   */
     }
 }
